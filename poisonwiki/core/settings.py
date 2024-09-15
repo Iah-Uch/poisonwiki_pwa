@@ -221,10 +221,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
-# ------------------------
-# Third Party API Keys
-# ------------------------
-OPENAI_API_KEY = env("OPENAI_API_KEY", default="")
 
 # ------------------------
 # User Authentication Configuration
