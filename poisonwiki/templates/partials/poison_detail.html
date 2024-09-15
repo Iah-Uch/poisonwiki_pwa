@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load img_tags %}
+{% load thumbnail %}
+{% comment %} {% load string_tags %} {% endcomment %}
+{% block content %}
+    <a href="{% url "poisons:list" %}" class="btn btn-outline-primary py-0"><i class="bi bi-arrow-left fs-3"></i></a>
+    <div class="mt-3 mb-5 pb-5 flex-column d-flex align-items-center justify-content-center">
+        {% if poison.image|get_format == 'PNG' %}
+            {% thumbnail poison.image "200x150" crop="center" as im %}
+                <img class="img-fluid mx-auto"
+                     alt="poison {{ poison.id }} image"
+                     src="{{ im.url }}"
+                     width="{{ im.width }}"
+                     height="{{ im.height }}">
+            {% endthumbnail %}
+        {% else %}
+            {% thumbnail poison.image "200x150" crop="center" colorspace="GRAY" as im %}
+                <img class="img-fluid mx-auto"
+                     alt="poison {{ poison.id }} image"
+                     src="{{ im.url }}"
+                     width="{{ im.width }}"
+                     height="{{ im.height }}">
+            {% endthumbnail %}
+        {% endif %}
+        <div class="card p-0 my-3 border-0 bg-dark col-12 col-md-12 col-lg-9 col-xl-6 col-xxl-5"
+             id="poison-{{ poison.id }}">
+            <div class="card-header rounded border-0 bg-dark"
+                 aria-controls="poisonDetails-{{ poison.id }}">
+                <h3 class="title">{{ poison.name }}</h3>
+                <h4 class="text-muted">{{ poison.scientific_name }}</h4>
+            </div>
+            <div class="card-body">
+                <p>Description: {{ poison.description }}</p>
+                <p>Symptoms: {{ poison.symptoms }}</p>
+                <p>Tratamento: {{ poison.treatment }}</p>
+                <p>Contamination Type: {{ poison.get_contamination_type_display }}</p>
+            </div>
+            <a class="rounded-pill btn btn-danger my-3 w-50 mx-auto fs-4" href="{{ poison.info_url }}">Learn More</a>
+        </div>
+    </div>
+{% endblock content %}

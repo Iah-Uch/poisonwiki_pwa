@@ -1,0 +1,42 @@
+Django  # Framework for building web applications
+django-pwa  # Provides Progressive Web App (PWA) support for Django. PSA: Install from the repo, current pip version is broken.
+openai # OpenAI API client for Python
+djangorestframework # Toolkit for building Web APIs in Django
+
+# Backend Handling
+whitenoise  # Simplifies serving static files in Django
+django-environ  # Simplifies handling environment variables in Django
+dj_database_url  # Parses database URLs in Django settings
+gunicorn  # A Python WSGI HTTP Server for UNIX
+psycopg2-binary  # PostgreSQL adapter for Python
+django-cors-headers  # Adds Cross-Origin Resource Sharing (CORS) headers to Django responses
+django-extra-views  # Provides additional class-based views for Django
+django-allauth  # Provides user authentication and registration functionality for Django
+django-authtools  # Provides custom user model for Django
+markdown # Provides Markdown support for Django
+django-import-export
+
+# Frontend tools
+django-htmx  # Provides htmx integration for Django
+django-active-link  # Provides active link highlighting for Django templates
+django-currentuser  # Provides a way to access the current authenticated user in Django
+django-view-breadcrumbs  # Provides breadcrumbs for Django views
+django-admin-interface  # Enhances Django admin interface with a modern look and additional features
+django-cleanup  # Automates the cleanup of temporary files in Django
+django-crispy-forms  # Makes rendering Django forms easier and more efficient
+crispy-bootstrap5  # Provides Bootstrap 5 theme for Django crispy-forms
+django-localflavor  # Country-specific Django helpers
+django-filter # Provides a simplified way to filter querysets dynamically in Django
+
+# Development tools
+dotenv-stripout  # Removes sensitive information from .env files
+black  # The uncompromising Python code formatter
+djlint  # Django-specific linting tool
+django-extensions  # Provides various extensions and commands for Django development
+ipython  # Interactive Python shell with additional features
+pyreadline  # Provides enhanced readline functionality for Python shell
+django-seed  # Provides a command to prepopulate a Django database with fake data
+Werkzeug # Provides a WSGI utility library for Python
+django-minify-html # Minifies HTML output in Django
+pyOpenSSL # Python wrapper for OpenSSL
+sorl-thumbnail # Provides thumbnailing for Django

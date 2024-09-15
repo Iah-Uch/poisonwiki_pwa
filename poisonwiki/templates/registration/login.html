@@ -1,0 +1,17 @@
+{% extends "registration/registration_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block form %}
+    <div class="mt-5 mx-0 mx-sm-auto col-12 col-sm-6 col-md-6 col-lg-4">
+        <h2 class="my-2 py-4">Login</h2>
+        {% crispy form %}
+        <div class="row col-12 text-center my-4">
+            <a class="fs-6 text-muted text-decoration-none" href="">Esqueci minha senha</a>
+        </div>
+        <div class="col d-flex justify-content-center">
+            <p>Não tem acesso?&nbsp;</p>
+            <a class="text-decoration-none text-primary"
+               href="{% url 'accounts:sign_up' %}">Crie sua conta!</a>
+        </div>
+    </div>
+{% endblock form %}

@@ -1,0 +1,60 @@
+
+{% extends "base.html" %}
+{% load pwa %}
+{% load static %}
+{% load tz %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'assets/css/landing.css' %}">
+{% endblock css %}
+{% block body %}
+    <body class=" m-0 pb-5 p-0"
+          hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+        <div class="background position-absolute h-100 w-100">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="20"></feGaussianBlur>
+                <feColorMatrix in="blur" mode="matrix" result="goo" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"></feColorMatrix>
+                <feBlend in="SourceGraphic" in2="goo"></feBlend>
+                </filter>
+                </defs>
+            </svg>
+            <div id="particles"></div>
+        </div>
+        <header class="sticky-top p-3 d-flex justify-content-center">
+            {% include "components/landing-navbar.html" %}
+        </header>
+        {% localtime on %}
+        <div
+              class="bd-content px-1 px-md-5 d-flex justify-content-center">
+            {% block content %}
+                <div class="align-items-center d-flex rounded flex-column glassy p-3">
+                    <div class="row">
+                        <div class="col-12 col-md-6 me-md-auto m-0">
+                            <h1>Lorem Ipsum</h1>
+                            <p class="m-0">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime tenetur nulla veniam sint, ipsum quasi harum omnis id?
+                            </p>
+                            <div class="glassmorph rounded p-3 mt-4 card col-12 col-md-6">
+                                <h1>Instale o App!</h1>
+                                <p>Essa é uma versão de testes, erros e instabilidades podem ocorrer.</p>
+                                <button type="button" class="ms-auto btn btn-outline-success disabled" id="install">
+                                    Instalar<i class="ms-1 bi bi-box-arrow-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <img class="col-12 col-md-4 img-fluid p-0 mt-2 m-sm-0"
+                             src="{% static 'assets/imgs/shots_framed.png' %}"
+                             alt="Screenshots from the app">
+                    </div>
+                    <!-- Glassmorphism Content Container -->
+
+                </div>
+            {% endblock content %}
+        </div>
+    {% endlocaltime %}
+</body>
+{% endblock body %}
+{% block scripts %}
+    <script src="{% static 'assets/js/landing.js' %}"></script>
+{% endblock scripts %}

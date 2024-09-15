@@ -1,0 +1,40 @@
+{% comment %} {% load string_tags %} {% endcomment %}
+{% load thumbnail %}
+{% load img_tags %}
+{% for poison in poisons %}
+    <!-- Horizontal card -->
+    <a href="{% url "poisons:detail" pk=poison.id %}"
+       class="card overflow-hidden text-decoration-none mb-3 p-2"
+       {% if forloop.last and page_obj.has_next %} hx-trigger="revealed" hx-get="{{ pagination_url }}" hx-swap="afterend" hx-target="this" id="trigger_card_{{ next_page }}" data-page="{{ next_page }}" {% endif %}>
+        <div class="row g-0">
+            <div class="col-6">
+                <div class="card-body my-auto">
+                    <h5 class="card-title mb-1">{{ poison.name }}</h5>
+                </div>
+            </div>
+            <div class="col-6 justify-content-end d-flex">
+                {% if poison.image|get_format == 'PNG' %}
+                    {% thumbnail poison.image "150x100" crop="center" as im %}
+                        <img class="img-fluid"
+                             alt="poison {{ poison.id }} image"
+                             src="{{ im.url }}"
+                             width="{{ im.width }}"
+                             height="{{ im.height }}">
+                    {% endthumbnail %}
+                {% else %}
+                    {% thumbnail poison.image "150x100" crop="center" colorspace="GRAY" as im %}
+                        <img class="img-fluid"
+                             alt="poison {{ poison.id }} image"
+                             src="{{ im.url }}"
+                             width="{{ im.width }}"
+                             height="{{ im.height }}">
+                    {% endthumbnail %}
+                {% endif %}
+            </div>
+        </div>
+    </a>
+{% empty %}
+    <div class="p-2 h-100 text-center">
+        <p class=" my-5">Nenhum veneno encontrado...</p>
+    </div>
+{% endfor %}

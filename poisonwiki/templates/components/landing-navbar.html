@@ -1,0 +1,51 @@
+{% load static %}
+{% load active_link_tags %}
+<nav class="col-12 col-md-10 col-lg-6 glassmorph rounded-pill navbar shadow-lg bg-none px-3"
+     aria-label="navbar large">
+    <div class="container-fluid">
+        <a class="navbar-brand">
+            <img src="{% static 'assets/imgs/favicon.ico' %}"
+                 alt="Logo"
+                 width="24"
+                 height="24"
+                 class="d-inline-block align-text-top">
+            PoisonWiki
+        </a>
+    <ul class="navbar-nav h-100 justify-content-end flex-grow-1">
+        <div class="nav-item h-100 d-flex align-items-end ms-auto" data-bs-toggle="tooltip"
+        data-bs-title="Web App">
+            <a href="{% url "poisons:list" %}" class="btn btn-outline-info">
+                <i class="bi bi-app-indicator"></i>
+            </a>
+        </div>
+    </ul>
+{% comment %} <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas dark-offcanvas offcanvas-end text-bg-dark w-75" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbar2Label">PoisonWiki</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav h-100 justify-content-end flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link {% active_link 'events:list' css_inactive_class='text-muted' strict=True %}" href="{% url "events:list" %}">Timeline Diária</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% active_link 'events:history' css_inactive_class='text-muted' strict=True %}" href="{% url "events:history" %}">Histórico</a>
+                    </li>
+                    <div class="nav-item h-100 d-flex align-items-end">
+                        <form method="post" class="w-100 py-1 px-2 mt-3 mt-sm-0 " action="{% url 'accounts:sign_out' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger w-100">
+                                Sign Out
+                                <i class="ps-1 bi bi-box-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                </ul>
+            </div>
+</div> {% endcomment %}
+</div>
+</nav>

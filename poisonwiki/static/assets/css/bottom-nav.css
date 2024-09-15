@@ -1,0 +1,40 @@
+.mic-btn , .mic-btn:hover, .mic-btn:active, .mic-btn:focus {
+    position: relative;
+    transform: translateY(-50%);
+    z-index: 1;
+    outline: none;
+    box-shadow: none;
+    background-color: var(--bs-primary);
+}
+
+@keyframes pulse-animation {
+    0%, 100% {
+        box-shadow: var(--bs-red-500) 0 0 9px 2px;
+
+    }
+    
+    50% {
+        box-shadow: var(--bs-red-500) 0 0 20px 3px;
+    }
+}
+
+.mic-btn.recording {
+    background-color: var(--bs-red-500);
+    animation: pulse-animation 2s infinite;
+    scale: 1.15;
+}
+
+.indicator.active {
+    display: block;
+}
+
+.mic-btn:has(.indicator.active) .bi-mic-fill,
+.mic-btn:not(:has(.indicator.active)) .indicator {
+    display: none;
+}
+
+
+#bottom-nav {
+    background: rgb(222 232 255 / 18%);
+    backdrop-filter: blur(6px);
+}

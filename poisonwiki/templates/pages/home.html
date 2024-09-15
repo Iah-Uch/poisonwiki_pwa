@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+<style>
+  .tag:hover{
+    outline: none;
+    box-shadow: none;
+    background-color: inherit;
+    color: var(--bs-primary);
+  }
+
+  .tag.active {
+    background-color: var(--bs-primary);
+    color: white;
+  }
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+</style>
+{% endblock css %}
+{% block content %}
+  <div class="mt-3 mb-5 pb-5 flex-column d-flex align-items-center justify-content-center">
+    <form class="col-12 col-md-12 col-lg-9 col-xl-6 col-xxl-5 row my-2"
+          hx-get="{% url 'poisons:list' %}"
+          hx-target="#poison_list"
+          hx-swap="innerHTML transition:true"
+          id="poison_filter"
+          hx-push-url="true"
+          hx-boost="true"
+          hx-trigger="change delay:150ms">
+      <div class="input-group">
+        <input class="form-control-lg textinput form-control"
+               id="id_search"
+               name="search"
+               placeholder="Search...">
+        <span class="input-group-text"><i class="bi bi-search text-primary"></i></span>
+      </div>
+      <div class="form-group my-3 d-flex align-items-center">
+        <div class="mx-auto overflow-scroll d-flex">
+          {% for choice in filter.form.contamination_type %}
+            <label class="btn btn-outline-primary mx-2 tag"
+                   onclick="toggleCheckbox(this)">
+              {{ choice.tag }}  <!-- This renders the hidden checkbox -->
+              {{ choice.choice_label }}
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    </form>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-5" id="poison_list">{% include "partials/poison_list.html" %}</div>
+  </div>
+{% endblock content %}
+{% block scripts %}
+  <script>
+    function toggleCheckbox(label) {
+        // Find the checkbox input within the clicked label
+        var checkbox = label.querySelector('input[type="checkbox"]');
+
+        // Toggle the checkbox's checked state
+        checkbox.checked = !checkbox.checked;
+        // Toggle the active class on the label to show the pill as selected/deselected
+        if (checkbox.checked) {
+            label.classList.add('active');
+        } else {
+        label.classList.remove('active');
+        };
+
+    }
+  </script>
+{% endblock scripts %}

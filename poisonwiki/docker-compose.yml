@@ -1,0 +1,82 @@
+services:
+  db:
+    container_name: poisonwiki_db
+    image: postgres:14-alpine
+    restart: always
+    user: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - LC_ALL=C.UTF-8
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=poisonwiki_db
+    ports:
+      - "5431:5432"
+    networks:
+      - poisonwiki-network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: poisonwiki
+    hostname: app
+    stdin_open: true
+    restart: always
+    expose:
+      - '8000'
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt/:ro
+      - static:/poisonwiki/staticfiles
+      - media:/poisonwiki/media_root
+      - .env:/poisonwiki/.env
+    networks:
+      - poisonwiki-network
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  nginx:
+    container_name: poisonwiki_nginx
+    restart: unless-stopped
+    image: nginx:alpine
+    hostname: nginx
+    command: /bin/ash -c "while :; do sleep 6h & wait $${!}; nginx -s reload; done & exec nginx -g 'daemon off;'"
+    expose:
+      - "80"
+      - "443"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - static:/staticfiles/
+      - media:/media_root/
+      - ./docker/config/nginx/:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    depends_on:
+      - app
+    networks:
+      - poisonwiki-network
+
+  certbot:
+    container_name: certbot
+    image: certbot/certbot:latest
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot   
+    depends_on:
+      - nginx
+    networks:
+      - poisonwiki-network
+      
+volumes:
+  pgdata:
+  static:
+  media:
+
+networks:
+  poisonwiki-network:

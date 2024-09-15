@@ -60,6 +60,10 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+staticfiles/
+cert.pem
+key.pem
+media_root/
 
 # Flask stuff:
 instance/
@@ -160,3 +164,19 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+poisonwiki/data/certbot/conf/accounts/acme-staging-v02.api.letsencrypt.org/directory/14c38dcfe6510085a4a3afb1aab49dd3/meta.json
+poisonwiki/data/certbot/conf/accounts/acme-staging-v02.api.letsencrypt.org/directory/14c38dcfe6510085a4a3afb1aab49dd3/private_key.json
+poisonwiki/data/certbot/conf/accounts/acme-staging-v02.api.letsencrypt.org/directory/14c38dcfe6510085a4a3afb1aab49dd3/regr.json
+poisonwiki/data/certbot/conf/accounts/acme-v02.api.letsencrypt.org/directory/22e25aa05d2caced18a8fc56ff59df85/meta.json
+poisonwiki/data/certbot/conf/accounts/acme-v02.api.letsencrypt.org/directory/22e25aa05d2caced18a8fc56ff59df85/private_key.json
+poisonwiki/data/certbot/conf/accounts/acme-v02.api.letsencrypt.org/directory/22e25aa05d2caced18a8fc56ff59df85/regr.json
+poisonwiki/data/certbot/conf/archive/pesquisa.poisonwiki.com.br/cert1.pem
+poisonwiki/data/certbot/conf/archive/pesquisa.poisonwiki.com.br/chain1.pem
+poisonwiki/data/certbot/conf/archive/pesquisa.poisonwiki.com.br/fullchain1.pem
+poisonwiki/data/certbot/conf/archive/pesquisa.poisonwiki.com.br/privkey1.pem
+poisonwiki/data/certbot/conf/live/README
+poisonwiki/data/certbot/conf/live/pesquisa.poisonwiki.com.br/chain.pem
+poisonwiki/data/certbot/conf/live/pesquisa.poisonwiki.com.br/fullchain.pem
+poisonwiki/data/certbot/conf/live/pesquisa.poisonwiki.com.br/privkey.pem
+poisonwiki/data/certbot/conf/live/pesquisa.poisonwiki.com.br/README
+poisonwiki/data/certbot/conf/renewal/pesquisa.poisonwiki.com.br.conf

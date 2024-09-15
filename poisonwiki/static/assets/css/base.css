@@ -1,0 +1,51 @@
+body, html {
+    font-size: 1.1rem;
+    font-family: "Roboto", sans-serif;
+    height: 100lvh;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.z-index-1000 {
+    z-index: 1016;
+}
+
+
+.OTHER {
+    background-color: var(--bs-light);
+}
+
+.MEAL {
+    background-color: var(--bs-amber-500);
+}
+
+.EXERCISE {
+    background-color: var(--bs-green-700);
+}
+
+.INSULIN {
+    background-color: var(--bs-blue-500);
+}
+
+.MEDICATION {
+    background-color: var(--bs-purple-500);
+}
+
+.SYMPTOM {
+    background-color: var(--bs-red-500);
+}
+
+.DRINK {
+    background-color: var(--bs-orange-400);
+}
+
+.SLEEP {
+    background-color: var(--bs-indigo-500);
+}
