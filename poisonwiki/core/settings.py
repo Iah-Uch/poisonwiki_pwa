@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_cleanup.apps.CleanupConfig",
     "authtools",
+    "ckeditor",
     "crispy_forms",
     "crispy_bootstrap5",
     "view_breadcrumbs",
@@ -126,7 +127,14 @@ MESSAGE_TAGS = {
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]
 THUMBNAIL_PRESERVE_FORMAT = True
+CKEDITOR_UPLOAD_PATH = "pannel_uploads/"
 
+CKEDITOR_CONFIGS = {
+    "default": {
+        # 'toolbar': None, #You can change this based on your requirements.
+        "width": "auto",
+    },
+}
 # ------------------------
 # PWA Configuration
 # ------------------------

@@ -40,3 +40,4 @@ Werkzeug # Provides a WSGI utility library for Python
 django-minify-html # Minifies HTML output in Django
 pyOpenSSL # Python wrapper for OpenSSL
 sorl-thumbnail # Provides thumbnailing for Django
+django-ckeditor # Provides a rich text editor for Django

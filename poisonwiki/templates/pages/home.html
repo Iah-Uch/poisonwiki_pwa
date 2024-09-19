@@ -7,11 +7,11 @@
     outline: none;
     box-shadow: none;
     background-color: inherit;
-    color: var(--bs-primary);
+    color: var(--bs-success);
   }
 
   .tag.active {
-    background-color: var(--bs-primary);
+    background-color: var(--bs-success);
     color: white;
   }
   ::-webkit-scrollbar {
@@ -35,12 +35,12 @@
                id="id_search"
                name="search"
                placeholder="Search...">
-        <span class="input-group-text"><i class="bi bi-search text-primary"></i></span>
+        <span class="input-group-text"><i class="bi bi-search text-success"></i></span>
       </div>
       <div class="form-group my-3 d-flex align-items-center">
         <div class="mx-auto overflow-scroll d-flex">
           {% for choice in filter.form.contamination_type %}
-            <label class="btn btn-outline-primary mx-2 tag"
+            <label class="btn btn-outline-success mx-2 tag"
                    onclick="toggleCheckbox(this)">
               {{ choice.tag }}  <!-- This renders the hidden checkbox -->
               {{ choice.choice_label }}
