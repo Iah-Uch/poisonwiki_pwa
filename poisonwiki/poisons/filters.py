@@ -50,4 +50,6 @@ class PoisonFilter(df.FilterSet):
             Q(name__icontains=value)
             | Q(scientific_name__icontains=value)
             | Q(description__icontains=value)
+            | Q(symptoms__icontains=value)
+            | Q(treatment__icontains=value)
         )
